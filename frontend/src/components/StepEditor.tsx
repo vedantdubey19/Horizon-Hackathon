@@ -121,7 +121,7 @@ export const StepEditor: React.FC<StepEditorProps> = ({
             type="button"
             className="primary-btn"
             disabled={isGrading}
-            onClick={onSubmitGrade}
+            onClick={() => onSubmitGrade()}
           >
             {isGrading
               ? 'Evaluating Steps...'

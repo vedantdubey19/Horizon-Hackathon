@@ -144,10 +144,11 @@ export function useGrading() {
     setSteps((prev) => prev.map((step) => ({ ...step, needs_confirmation: false })));
   }, []);
 
-  const submitGrade = useCallback(async (stepsOverride?: TranscribedStep[]) => {
-    const rawSteps = stepsOverride || (stepsRef.current.length > 0 ? stepsRef.current : steps);
+  const submitGrade = useCallback(async (stepsOverride?: any) => {
+    const validOverride = Array.isArray(stepsOverride) ? (stepsOverride as TranscribedStep[]) : undefined;
+    const rawSteps = validOverride || (stepsRef.current.length > 0 ? stepsRef.current : steps);
     const prob = selectedProblemRef.current || selectedProblem;
-    if (!prob || rawSteps.length === 0) return;
+    if (!prob || !Array.isArray(rawSteps) || rawSteps.length === 0) return;
 
     // Auto-confirm all steps on submission so grading is never blocked
     const currentSteps = rawSteps.map((s) => ({ ...s, needs_confirmation: false }));

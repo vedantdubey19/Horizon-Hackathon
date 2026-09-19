@@ -96,8 +96,8 @@ class ExtractedStep(BaseModel):
 class GradeResultItem(BaseModel):
     rule_id: str
     label: str
-    awarded: int
-    max: int
+    awarded: float = 0.0
+    max: float = 0.0
     reason: str
     step_id: Optional[int] = None
     is_recovered: bool = False
@@ -112,8 +112,8 @@ class GradeRequest(BaseModel):
 class GradeResponse(BaseModel):
     problem_id: str
     results: List[GradeResultItem]
-    total: int
-    max_total: int
+    total: float = 0.0
+    max_total: float = 0.0
 
 
 # Hint schemas
