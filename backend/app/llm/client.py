@@ -43,23 +43,38 @@ class LLMClient:
         raise NotImplementedError
 
 
+def _clean_json_text(text: str) -> str:
+    """Clean markdown code fences from JSON text before parsing."""
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        lines = cleaned.split("\n")
+        if lines[0].startswith("```"):
+            lines = lines[1:]
+        if lines and lines[-1].startswith("```"):
+            lines = lines[:-1]
+        cleaned = "\n".join(lines).strip()
+    return cleaned
+
+
 class GeminiLLMClient(LLMClient):
     """Google Gemini LLM client implementation."""
 
     def __init__(self):
-        self.api_key = settings.LLM_API_KEY
+        self.api_key = settings.api_key
         self.vision_model = settings.LLM_MODEL_VISION
         self.text_model = settings.LLM_MODEL_TEXT
         self.timeout = settings.TIMEOUT_SECONDS
         self._client = None
 
     def _get_client(self):
-        if self._client is None:
+        current_key = settings.api_key
+        if self._client is None or self.api_key != current_key:
             from google import genai
 
+            self.api_key = current_key
             if not self.api_key:
                 raise LLMUnavailableError(
-                    detail="LLM_API_KEY is not configured in backend environment."
+                    detail="LLM_API_KEY / GEMINI_API_KEY is not configured in backend environment."
                 )
             self._client = genai.Client(api_key=self.api_key)
         return self._client
@@ -121,7 +136,8 @@ class GeminiLLMClient(LLMClient):
                 )
 
                 raw_text = response.text or "{}"
-                data = json.loads(raw_text)
+                cleaned_text = _clean_json_text(raw_text)
+                data = json.loads(cleaned_text)
 
                 if response_model:
                     validated = response_model.model_validate(data)
@@ -179,7 +195,8 @@ class GeminiLLMClient(LLMClient):
                 )
 
                 raw_text = response.text or "{}"
-                data = json.loads(raw_text)
+                cleaned_text = _clean_json_text(raw_text)
+                data = json.loads(cleaned_text)
 
                 if response_model:
                     validated = response_model.model_validate(data)
