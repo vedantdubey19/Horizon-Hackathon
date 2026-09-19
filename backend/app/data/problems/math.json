@@ -1,0 +1,247 @@
+[
+  {
+    "id": "math-quad-01",
+    "subject": "math",
+    "class": 10,
+    "statement": "Solve the quadratic equation 2*x^2 - 7*x + 3 = 0 using the quadratic formula.",
+    "expected": { "value": [3.0, 0.5] },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "Quadratic Formula / Discriminant Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["x = (-b + sqrt(b**2 - 4*a*c))/(2*a)", "D = b**2 - 4*a*c", "x = (-b - sqrt(b**2 - 4*a*c))/(2*a)"]
+      },
+      {
+        "id": "substitution",
+        "label": "Coefficient Identification & Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "a": 2.0, "b": -7.0, "c": 3.0 }
+      },
+      {
+        "id": "discriminant",
+        "label": "Discriminant Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 25.0,
+        "tolerance": 0.01,
+        "depends_on": "substitution"
+      },
+      {
+        "id": "roots",
+        "label": "Roots Evaluation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 3.0,
+        "tolerance": 0.01,
+        "depends_on": "discriminant"
+      }
+    ]
+  },
+  {
+    "id": "math-ap-02",
+    "subject": "math",
+    "class": 10,
+    "statement": "Find the 20th term and the sum of the first 20 terms of the arithmetic progression: 3, 7, 11, 15, ...",
+    "expected": { "value": 820.0 },
+    "rubric": [
+      {
+        "id": "term_formula",
+        "label": "nth Term Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["a_n = a + (n - 1) * d", "T_n = a + (n - 1) * d", "l = a + (n - 1) * d"]
+      },
+      {
+        "id": "term_calc",
+        "label": "20th Term Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 79.0,
+        "tolerance": 0.01,
+        "depends_on": "term_formula"
+      },
+      {
+        "id": "sum_formula",
+        "label": "Sum of n Terms Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["S_n = (n / 2) * (2 * a + (n - 1) * d)", "S_n = (n / 2) * (a + l)"]
+      },
+      {
+        "id": "sum_calc",
+        "label": "Sum of 20 Terms Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 820.0,
+        "tolerance": 0.01,
+        "depends_on": "term_calc"
+      }
+    ]
+  },
+  {
+    "id": "math-diff-03",
+    "subject": "math",
+    "class": 11,
+    "statement": "Find the derivative of f(x) = 3*x^3 - 5*x^2 + 4*x - 7 with respect to x, and evaluate f'(2).",
+    "expected": { "value": 20.0 },
+    "rubric": [
+      {
+        "id": "derivative_expr",
+        "label": "Derivative Expression",
+        "marks": 1,
+        "check": "expression",
+        "target": "9*x**2 - 10*x + 4"
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution of x = 2",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "x": 2.0 }
+      },
+      {
+        "id": "evaluation",
+        "label": "Derivative Value at x = 2",
+        "marks": 1,
+        "check": "numeric",
+        "target": 20.0,
+        "tolerance": 0.01,
+        "depends_on": "derivative_expr"
+      }
+    ]
+  },
+  {
+    "id": "math-int-04",
+    "subject": "math",
+    "class": 12,
+    "statement": "Evaluate the definite integral: \\int_{1}^{3} (3*x^2 + 2*x - 1) dx.",
+    "expected": { "value": 32.0 },
+    "rubric": [
+      {
+        "id": "antiderivative",
+        "label": "Antiderivative Determination",
+        "marks": 1,
+        "check": "expression",
+        "target": "x**3 + x**2 - x"
+      },
+      {
+        "id": "limits_sub",
+        "label": "Fundamental Theorem Limits Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "F_upper": 33.0, "F_lower": 1.0 }
+      },
+      {
+        "id": "final_value",
+        "label": "Definite Integral Value",
+        "marks": 1,
+        "check": "numeric",
+        "target": 32.0,
+        "tolerance": 0.01,
+        "depends_on": "limits_sub"
+      }
+    ]
+  },
+  {
+    "id": "math-sys-05",
+    "subject": "math",
+    "class": 10,
+    "statement": "Solve the system of linear equations: 3*x + 2*y = 13 and 2*x - y = 4.",
+    "expected": { "value": [3.0, 2.0] },
+    "rubric": [
+      {
+        "id": "elimination_setup",
+        "label": "Substitution / Elimination Expression",
+        "marks": 1,
+        "check": "expression",
+        "target": "y = 2*x - 4"
+      },
+      {
+        "id": "x_calc",
+        "label": "Solve for x",
+        "marks": 1,
+        "check": "numeric",
+        "target": 3.0,
+        "tolerance": 0.01,
+        "depends_on": "elimination_setup"
+      },
+      {
+        "id": "y_calc",
+        "label": "Solve for y",
+        "marks": 1,
+        "check": "numeric",
+        "target": 2.0,
+        "tolerance": 0.01,
+        "depends_on": "x_calc"
+      }
+    ]
+  },
+  {
+    "id": "math-trig-06",
+    "subject": "math",
+    "class": 10,
+    "statement": "Given that tan(theta) = 4/3 in a right triangle, calculate the value of sin(theta) * cos(theta).",
+    "expected": { "value": 0.48 },
+    "rubric": [
+      {
+        "id": "hypotenuse",
+        "label": "Hypotenuse Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 5.0,
+        "tolerance": 0.01
+      },
+      {
+        "id": "trig_values",
+        "label": "Trigonometric Ratio Evaluation",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "sin": 0.8, "cos": 0.6 }
+      },
+      {
+        "id": "product_calc",
+        "label": "Product Evaluation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 0.48,
+        "tolerance": 0.01,
+        "depends_on": "trig_values"
+      }
+    ]
+  },
+  {
+    "id": "math-geom-07",
+    "subject": "math",
+    "class": 10,
+    "statement": "Find the distance between the points A(-2, 3) and B(4, -5).",
+    "expected": { "value": 10.0 },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "Distance Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["d = sqrt((x_2 - x_1)**2 + (y_2 - y_1)**2)", "d = sqrt((x_1 - x_2)**2 + (y_1 - y_2)**2)"]
+      },
+      {
+        "id": "substitution",
+        "label": "Coordinate Differences Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "dx": 6.0, "dy": -8.0 }
+      },
+      {
+        "id": "distance_calc",
+        "label": "Distance Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 10.0,
+        "tolerance": 0.01,
+        "depends_on": "substitution"
+      }
+    ]
+  }
+]

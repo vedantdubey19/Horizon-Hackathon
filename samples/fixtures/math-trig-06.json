@@ -1,0 +1,23 @@
+{
+  "problem_id": "math-trig-06",
+  "steps": [
+    {
+      "id": 1,
+      "text": "h = sqrt(4**2 + 3**2) = 5",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "sin = 4/5 = 0.8, cos = 3/5 = 0.6",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "sin * cos = 0.8 * 0.6 = 0.48",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

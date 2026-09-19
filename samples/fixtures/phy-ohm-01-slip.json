@@ -1,0 +1,8 @@
+{
+  "problem_id": "phy-ohm-01",
+  "steps": [
+    { "id": 1, "text": "V = I * R", "confidence": 0.98, "needs_confirmation": false },
+    { "id": 2, "text": "V = 0.5 * 2", "confidence": 0.70, "needs_confirmation": true },
+    { "id": 3, "text": "V = 1 V", "confidence": 0.96, "needs_confirmation": false }
+  ]
+}

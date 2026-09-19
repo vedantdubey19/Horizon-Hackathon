@@ -1,0 +1,29 @@
+{
+  "problem_id": "math-ap-02",
+  "steps": [
+    {
+      "id": 1,
+      "text": "a_n = a + (n - 1) * d",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "a_20 = 3 + 19 * 4 = 79",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "S_n = (n / 2) * (a + l)",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 4,
+      "text": "S_20 = (20 / 2) * (3 + 79) = 10 * 82 = 820",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    }
+  ]
+}

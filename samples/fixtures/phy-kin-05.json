@@ -1,0 +1,23 @@
+{
+  "problem_id": "phy-kin-05",
+  "steps": [
+    {
+      "id": 1,
+      "text": "s = u * t + 0.5 * a * t**2",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "s = 0 * 10 + 0.5 * 1.2 * 10**2",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "s = 0.6 * 100 = 60 m",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

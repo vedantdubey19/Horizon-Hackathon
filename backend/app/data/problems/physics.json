@@ -1,0 +1,340 @@
+[
+  {
+    "id": "phy-ohm-01",
+    "subject": "physics",
+    "class": 10,
+    "statement": "A wire of resistance 20 ohm carries a current of 0.5 A. Find the potential difference across the wire.",
+    "expected": { "value": 10.0, "unit": "V" },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["V = I * R", "V = IR", "V = R * I", "I = V / R", "R = V / I"]
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "I": 0.5, "R": 20.0 }
+      },
+      {
+        "id": "calculation",
+        "label": "Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 10.0,
+        "tolerance": 0.01,
+        "depends_on": "substitution"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["V", "volt", "volts"]
+      }
+    ]
+  },
+  {
+    "id": "phy-res-02",
+    "subject": "physics",
+    "class": 10,
+    "statement": "Two resistors of 6 ohm and 3 ohm are connected in parallel across a 12 V battery. Calculate the equivalent resistance and the total current drawn from the battery.",
+    "expected": { "value": 6.0, "unit": "A" },
+    "rubric": [
+      {
+        "id": "parallel_formula",
+        "label": "Parallel Resistance Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["1/R_p = 1/R_1 + 1/R_2", "R_p = (R_1 * R_2)/(R_1 + R_2)", "1/R = 1/R1 + 1/R2", "R = (R1*R2)/(R1+R2)"]
+      },
+      {
+        "id": "parallel_sub",
+        "label": "Parallel Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "R_1": 6.0, "R_2": 3.0 }
+      },
+      {
+        "id": "req_calc",
+        "label": "Equivalent Resistance Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 2.0,
+        "tolerance": 0.01,
+        "depends_on": "parallel_sub"
+      },
+      {
+        "id": "current_formula",
+        "label": "Ohm's Law for Total Current",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["I = V / R_p", "I = V / R", "V = I * R_p", "V = I * R"]
+      },
+      {
+        "id": "current_calc",
+        "label": "Total Current Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 6.0,
+        "tolerance": 0.01,
+        "depends_on": "req_calc"
+      }
+    ]
+  },
+  {
+    "id": "phy-lens-03",
+    "subject": "physics",
+    "class": 10,
+    "statement": "An object is placed 30 cm in front of a concave mirror of focal length 20 cm. Find the image distance using the mirror formula.",
+    "expected": { "value": -60.0, "unit": "cm" },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "Mirror Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["1/f = 1/v + 1/u", "1/v = 1/f - 1/u"]
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution with Sign Convention",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "f": -20.0, "u": -30.0 }
+      },
+      {
+        "id": "calculation",
+        "label": "Image Distance Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": -60.0,
+        "tolerance": 0.5,
+        "depends_on": "substitution"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["cm", "centimeter", "centimeters", "centimetres"]
+      }
+    ]
+  },
+  {
+    "id": "phy-kin-04",
+    "subject": "physics",
+    "class": 11,
+    "statement": "A car accelerates uniformly from rest at 2.5 m/s^2 for 8 seconds. Find its final velocity.",
+    "expected": { "value": 20.0, "unit": "m/s" },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "First Equation of Motion",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["v = u + a * t", "v - u = a * t", "a = (v - u) / t", "v = u + at"]
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "u": 0.0, "a": 2.5, "t": 8.0 }
+      },
+      {
+        "id": "calculation",
+        "label": "Final Velocity Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 20.0,
+        "tolerance": 0.01,
+        "depends_on": "substitution"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["m/s", "m s^-1", "m/sec", "meters per second", "metres per second"]
+      }
+    ]
+  },
+  {
+    "id": "phy-kin-05",
+    "subject": "physics",
+    "class": 11,
+    "statement": "A train starts from rest and moves with a uniform acceleration of 1.2 m/s^2 for 10 seconds. Find the distance traveled.",
+    "expected": { "value": 60.0, "unit": "m" },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "Second Equation of Motion",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["s = u * t + 0.5 * a * t**2", "s = u * t + (1/2) * a * t**2", "s = ut + 0.5 * a * t^2", "s = ut + (1/2)*a*t^2"]
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "u": 0.0, "a": 1.2, "t": 10.0 }
+      },
+      {
+        "id": "calculation",
+        "label": "Distance Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 60.0,
+        "tolerance": 0.1,
+        "depends_on": "substitution"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["m", "meter", "metre", "meters", "metres"]
+      }
+    ]
+  },
+  {
+    "id": "phy-work-06",
+    "subject": "physics",
+    "class": 11,
+    "statement": "A body of mass 4 kg moving with velocity 5 m/s is brought to rest by a constant braking force. Calculate the work done by the braking force.",
+    "expected": { "value": -50.0, "unit": "J" },
+    "rubric": [
+      {
+        "id": "formula",
+        "label": "Work-Energy Theorem",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["W = 0.5 * m * (v**2 - u**2)", "W = (1/2) * m * (v**2 - u**2)", "W = 0.5 * m * v**2 - 0.5 * m * u**2", "Delta_K = 0.5 * m * v**2 - 0.5 * m * u**2"]
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "m": 4.0, "u": 5.0, "v": 0.0 }
+      },
+      {
+        "id": "calculation",
+        "label": "Work Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": -50.0,
+        "tolerance": 0.1,
+        "depends_on": "substitution"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["J", "joule", "joules", "N m", "N*m"]
+      }
+    ]
+  },
+  {
+    "id": "phy-trap-07",
+    "subject": "physics",
+    "class": 11,
+    "statement": "A perpendicular force of 50 N acts on an area of 25 cm^2. Calculate the pressure exerted in Pascals (N/m^2).",
+    "expected": { "value": 20000.0, "unit": "Pa" },
+    "rubric": [
+      {
+        "id": "conversion",
+        "label": "Area Unit Conversion (cm^2 to m^2)",
+        "marks": 1,
+        "check": "conversion",
+        "target": 0.0025,
+        "tolerance": 0.0001
+      },
+      {
+        "id": "formula",
+        "label": "Pressure Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["P = F / A", "F = P * A"]
+      },
+      {
+        "id": "substitution",
+        "label": "Substitution",
+        "marks": 1,
+        "check": "substitution",
+        "expect": { "F": 50.0, "A": 0.0025 }
+      },
+      {
+        "id": "calculation",
+        "label": "Pressure Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 20000.0,
+        "tolerance": 0.01,
+        "depends_on": "conversion"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["Pa", "pascal", "pascals", "N/m^2", "N m^-2", "N/m2"]
+      }
+    ]
+  },
+  {
+    "id": "phy-power-08",
+    "subject": "physics",
+    "class": 12,
+    "statement": "An electric bulb is rated 220 V and 100 W. When it is operated on 110 V, calculate the power consumed.",
+    "expected": { "value": 25.0, "unit": "W" },
+    "rubric": [
+      {
+        "id": "res_formula",
+        "label": "Resistance Formula from Rating",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["R = V**2 / P", "P = V**2 / R"]
+      },
+      {
+        "id": "res_calc",
+        "label": "Resistance Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 484.0,
+        "tolerance": 1.0,
+        "depends_on": "res_formula"
+      },
+      {
+        "id": "power_formula",
+        "label": "Operating Power Formula",
+        "marks": 1,
+        "check": "formula",
+        "accept": ["P = V**2 / R", "P_new = V_new**2 / R"]
+      },
+      {
+        "id": "power_calc",
+        "label": "Operating Power Calculation",
+        "marks": 1,
+        "check": "numeric",
+        "target": 25.0,
+        "tolerance": 0.1,
+        "depends_on": "res_calc"
+      },
+      {
+        "id": "unit",
+        "label": "Unit",
+        "marks": 1,
+        "check": "unit",
+        "accept": ["W", "watt", "watts", "J/s"]
+      }
+    ]
+  }
+]

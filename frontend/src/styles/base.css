@@ -1,0 +1,114 @@
+@import './tokens.css';
+
+/* CSS Reset & Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--paper-bg);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--paper-bg);
+  color: var(--ink-primary);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Accessible Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--examiner-red);
+  outline-offset: 2px;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--ink-primary);
+  line-height: 1.25;
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--paper-edge);
+  border-radius: var(--radius-sm);
+  background-color: var(--paper-surface);
+  color: var(--ink-primary);
+  padding: var(--space-2) var(--space-4);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+button:hover:not(:disabled) {
+  background-color: #F5EFE6;
+  border-color: #D3C9B8;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary Button */
+button.primary-btn {
+  background-color: var(--examiner-red);
+  color: #FFFFFF;
+  border-color: #A82E23;
+  font-weight: 600;
+}
+
+button.primary-btn:hover:not(:disabled) {
+  background-color: #AD3227;
+  border-color: #94261C;
+}
+
+/* Plain / Link Buttons */
+button.text-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--examiner-red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+button.text-btn:hover {
+  background: none;
+  color: #94261C;
+}
+
+/* Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

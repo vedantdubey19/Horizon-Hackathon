@@ -1,0 +1,53 @@
+/* Design Tokens for MarkLoss Exam Paper Aesthetic */
+:root {
+  /* Paper Palette */
+  --paper-bg: #FAF7F0;        /* Warm off-white desk surface */
+  --paper-surface: #FFFEFA;   /* Crisp answer sheet */
+  --paper-edge: #E7E1D3;      /* Subtle sheet border */
+  --notebook-rule: #DCE6EE;   /* Light blue-grey notebook horizontal rules */
+  --margin-line: #E8A9A2;     /* Faint pinkish red margin rule */
+
+  /* Ink & Examiner Pen */
+  --ink-primary: #1F1D1A;     /* Primary written ink */
+  --ink-muted: #6B665C;       /* Secondary/muted pencil/ink */
+  --examiner-red: #C23B2E;    /* Examiner red pen (lost marks, crosses) */
+  --examiner-red-faint: rgba(194, 59, 46, 0.08);
+  --correct-green: #2E6B4C;   /* Correct ticks only */
+  --correct-green-faint: rgba(46, 107, 76, 0.08);
+
+  /* Highlights & Sticky Notes */
+  --highlight-ochre: #E9C46A;
+  --highlight-ochre-bg: rgba(233, 196, 106, 0.22);
+  --sticky-bg: #FFF9DB;
+  --sticky-border: #EADB8B;
+
+  /* Typography */
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-hand: 'Caveat', 'Kalam', cursive;
+
+  /* Spacing (4px scale) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Line Heights & Rhythms */
+  --rule-height: 36px;       /* Ruled paper line height */
+
+  /* Borders & Shadows */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-sheet: 0 1px 3px rgba(31, 29, 26, 0.05), 0 4px 12px rgba(31, 29, 26, 0.03);
+  --shadow-sticky: 2px 3px 8px rgba(31, 29, 26, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}

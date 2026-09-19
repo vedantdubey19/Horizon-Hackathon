@@ -1,0 +1,23 @@
+{
+  "problem_id": "phy-kin-04",
+  "steps": [
+    {
+      "id": 1,
+      "text": "v = u + a * t",
+      "confidence": 0.98,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "v = 0 + 2.5 * 8",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "v = 20 m/s",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    }
+  ]
+}

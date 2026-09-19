@@ -1,0 +1,9 @@
+{
+  "problem_id": "phy-trap-07",
+  "steps": [
+    { "id": 1, "text": "A = 25 cm^2", "confidence": 0.92, "needs_confirmation": false },
+    { "id": 2, "text": "P = F / A", "confidence": 0.97, "needs_confirmation": false },
+    { "id": 3, "text": "P = 50 / 25", "confidence": 0.94, "needs_confirmation": false },
+    { "id": 4, "text": "P = 2 Pa", "confidence": 0.95, "needs_confirmation": false }
+  ]
+}

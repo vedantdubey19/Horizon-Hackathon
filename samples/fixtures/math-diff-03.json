@@ -1,0 +1,23 @@
+{
+  "problem_id": "math-diff-03",
+  "steps": [
+    {
+      "id": 1,
+      "text": "dy/dx = 9*x**2 - 10*x + 4",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "At x = 2: 9*(2)**2 - 10*(2) + 4",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "dy/dx = 36 - 20 + 4 = 20",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}
