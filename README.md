@@ -10,7 +10,6 @@ Built for **Horizon 2026** *(AI in Education — Personalized, Accessible, High 
 [![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6.svg)](https://www.typescriptlang.org)
 [![SymPy](https://img.shields.io/badge/SymPy-Symbolic_CAS-brightgreen.svg)](https://www.sympy.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
