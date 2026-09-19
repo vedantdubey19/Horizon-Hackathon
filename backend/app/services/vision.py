@@ -3,7 +3,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 from app.config import settings
 from app.errors import (
     FileTooLargeError,
@@ -24,7 +24,22 @@ from app.services.cache import (
 logger = logging.getLogger("markloss.vision")
 
 ALLOWED_MIME_TYPES = {"image/jpeg", "image/png", "image/webp", "image/jpg"}
-FIXTURES_DIR = Path(__file__).resolve().parent.parent.parent.parent / "samples" / "fixtures"
+
+_CANDIDATE_FIXTURE_DIRS = [
+    Path(__file__).resolve().parent.parent / "data" / "fixtures",
+    Path(__file__).resolve().parent.parent.parent / "samples" / "fixtures",
+    Path(__file__).resolve().parent.parent.parent.parent / "samples" / "fixtures",
+    Path.cwd() / "backend" / "app" / "data" / "fixtures",
+    Path.cwd() / "samples" / "fixtures",
+]
+
+
+def _find_fixture_file(filename: str) -> Optional[Path]:
+    for d in _CANDIDATE_FIXTURE_DIRS:
+        cand = d / filename
+        if cand.exists():
+            return cand
+    return None
 
 
 def _load_sample_fixture(problem_id: str, filename: str = "") -> List[TranscribedStep]:
@@ -33,21 +48,17 @@ def _load_sample_fixture(problem_id: str, filename: str = "") -> List[Transcribe
 
     # 1. Problem-specific error/slip fixture
     if "slip" in filename or "wrong" in filename:
-        cand = FIXTURES_DIR / f"{problem_id}-slip.json"
-        if cand.exists():
-            target_file = cand
-        elif problem_id == "phy-ohm-01":
-            target_file = FIXTURES_DIR / "phy-ohm-01-slip.json"
+        target_file = _find_fixture_file(f"{problem_id}-slip.json")
+        if not target_file and problem_id == "phy-ohm-01":
+            target_file = _find_fixture_file("phy-ohm-01-slip.json")
 
     # 2. Standard problem fixture
-    if not target_file or not target_file.exists():
-        cand = FIXTURES_DIR / f"{problem_id}.json"
-        if cand.exists():
-            target_file = cand
+    if not target_file:
+        target_file = _find_fixture_file(f"{problem_id}.json")
 
     # 3. Fallback to phy-ohm-01
-    if not target_file or not target_file.exists():
-        target_file = FIXTURES_DIR / "phy-ohm-01.json"
+    if not target_file:
+        target_file = _find_fixture_file("phy-ohm-01.json")
 
     if target_file and target_file.exists():
         try:

@@ -1,0 +1,29 @@
+{
+  "problem_id": "math-quad-01",
+  "steps": [
+    {
+      "id": 1,
+      "text": "x = (-b + sqrt(b**2 - 4*a*c))/(2*a)",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "a = 2, b = -7, c = 3",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "D = (-7)**2 - 4*2*3 = 25",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 4,
+      "text": "x = (7 + 5)/4 = 3, x = 0.5",
+      "confidence": 0.94,
+      "needs_confirmation": false
+    }
+  ]
+}

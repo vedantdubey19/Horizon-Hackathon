@@ -1,24 +1,64 @@
 import { ApiError, GradeResponse, HintResponse, ProblemSummary, StepInput, TranscribedStep } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+function normalizeApiBase(): string {
+  const envBase = (import.meta.env.VITE_API_BASE_URL || '').trim();
+  if (!envBase) return '';
+  let url = envBase;
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    if (url.startsWith('localhost') || url.startsWith('127.0.0.1')) {
+      url = `http://${url}`;
+    } else {
+      url = `https://${url}`;
+    }
+  }
+  return url.replace(/\/+$/, '');
+}
+
+const API_BASE = normalizeApiBase();
+
+function apiUrl(path: string): string {
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${API_BASE}${cleanPath}`;
+}
 
 async function handleResponse<T>(res: Response): Promise<T> {
+  const contentType = res.headers.get('content-type') || '';
+  const isJson = contentType.includes('application/json');
+
   if (!res.ok) {
-    let errorData: { error?: ApiError } | null = null;
-    try {
-      errorData = await res.json();
-    } catch {
-      // Ignored
+    let errorData: { error?: ApiError; detail?: any } | null = null;
+    if (isJson) {
+      try {
+        errorData = await res.json();
+      } catch {
+        // Ignored
+      }
     }
 
     if (errorData?.error) {
       throw errorData.error;
     }
 
+    const message =
+      typeof errorData?.detail === 'string'
+        ? errorData.detail
+        : `Request failed with status ${res.status}: ${res.statusText}`;
+
     throw {
       code: 'HTTP_ERROR',
-      message: `Request failed with status ${res.status}: ${res.statusText}`,
-      action: 'Please check your connection and try again.',
+      message,
+      action:
+        res.status === 404
+          ? 'API endpoint not found. Please verify that the backend is running and reachable.'
+          : 'Please check your connection and try again.',
+    } as ApiError;
+  }
+
+  if (!isJson) {
+    throw {
+      code: 'INVALID_RESPONSE',
+      message: 'Received non-JSON response from server.',
+      action: 'Please ensure VITE_API_BASE_URL points to the backend server and not a static host.',
     } as ApiError;
   }
 
@@ -26,12 +66,12 @@ async function handleResponse<T>(res: Response): Promise<T> {
 }
 
 export async function fetchHealth(): Promise<{ status: string; version: string; demo_mode: boolean }> {
-  const res = await fetch(`${API_BASE}/api/health`);
+  const res = await fetch(apiUrl('/api/health'));
   return handleResponse(res);
 }
 
 export async function fetchProblems(): Promise<ProblemSummary[]> {
-  const res = await fetch(`${API_BASE}/api/problems`);
+  const res = await fetch(apiUrl('/api/problems'));
   return handleResponse(res);
 }
 
@@ -45,7 +85,7 @@ export async function transcribeImage(
   formData.append('problem_id', problemId);
   formData.append('file', file, fileName);
 
-  const res = await fetch(`${API_BASE}/api/transcribe`, {
+  const res = await fetch(apiUrl('/api/transcribe'), {
     method: 'POST',
     body: formData,
     signal,
@@ -60,7 +100,7 @@ export async function gradeSteps(
   previousResults?: any[],
   signal?: AbortSignal
 ): Promise<GradeResponse> {
-  const res = await fetch(`${API_BASE}/api/grade`, {
+  const res = await fetch(apiUrl('/api/grade'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -83,7 +123,7 @@ export async function fetchHint(
   level: number,
   signal?: AbortSignal
 ): Promise<HintResponse> {
-  const res = await fetch(`${API_BASE}/api/hint`, {
+  const res = await fetch(apiUrl('/api/hint'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

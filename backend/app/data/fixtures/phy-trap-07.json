@@ -1,0 +1,29 @@
+{
+  "problem_id": "phy-trap-07",
+  "steps": [
+    {
+      "id": 1,
+      "text": "A = 25 cm^2 = 25 * 10^-4 m^2 = 0.0025 m^2",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "P = F / A",
+      "confidence": 0.98,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "P = 50 / 0.0025 = 20000",
+      "confidence": 0.94,
+      "needs_confirmation": false
+    },
+    {
+      "id": 4,
+      "text": "P = 20000 Pa",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    }
+  ]
+}

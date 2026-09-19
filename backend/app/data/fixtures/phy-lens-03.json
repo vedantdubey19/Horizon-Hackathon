@@ -1,0 +1,29 @@
+{
+  "problem_id": "phy-lens-03",
+  "steps": [
+    {
+      "id": 1,
+      "text": "1/f = 1/v + 1/u",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "1/(-20) = 1/v + 1/(-30)",
+      "confidence": 0.94,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "1/v = -1/20 + 1/30 = -1/60",
+      "confidence": 0.93,
+      "needs_confirmation": false
+    },
+    {
+      "id": 4,
+      "text": "v = -60 cm",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

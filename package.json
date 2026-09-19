@@ -1,0 +1,11 @@
+{
+  "name": "horizon-hackathon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MarkLoss - Step-level AI examiner for handwritten physics & math",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

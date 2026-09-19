@@ -1,0 +1,23 @@
+{
+  "problem_id": "math-int-04",
+  "steps": [
+    {
+      "id": 1,
+      "text": "F(x) = x**3 + x**2 - x",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "F(3) = 27 + 9 - 3 = 33, F(1) = 1 + 1 - 1 = 1",
+      "confidence": 0.94,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "I = 33 - 1 = 32",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    }
+  ]
+}

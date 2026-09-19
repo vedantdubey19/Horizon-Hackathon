@@ -1,0 +1,23 @@
+{
+  "problem_id": "phy-work-06",
+  "steps": [
+    {
+      "id": 1,
+      "text": "W = 0.5 * m * (v**2 - u**2)",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "W = 0.5 * 4 * (0**2 - 5**2)",
+      "confidence": 0.94,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "W = 2 * (-25) = -50 J",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

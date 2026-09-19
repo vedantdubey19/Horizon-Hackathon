@@ -1,0 +1,23 @@
+{
+  "problem_id": "math-geom-07",
+  "steps": [
+    {
+      "id": 1,
+      "text": "d = sqrt((x_2 - x_1)**2 + (y_2 - y_1)**2)",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "d = sqrt((7 - 1)**2 + (-2 - 6)**2) = sqrt(6**2 + (-8)**2)",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "d = sqrt(36 + 64) = sqrt(100) = 10",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

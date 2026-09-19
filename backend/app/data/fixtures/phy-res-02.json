@@ -1,0 +1,29 @@
+{
+  "problem_id": "phy-res-02",
+  "steps": [
+    {
+      "id": 1,
+      "text": "1/R_p = 1/R_1 + 1/R_2",
+      "confidence": 0.97,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "1/R_p = 1/6 + 1/3 = 1/2 => R_p = 2",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "I = V / R_p",
+      "confidence": 0.98,
+      "needs_confirmation": false
+    },
+    {
+      "id": 4,
+      "text": "I = 12 / 2 = 6 A",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "problem_id": "phy-power-08",
+  "steps": [
+    {
+      "id": 1,
+      "text": "R = V**2 / P",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "R = 220**2 / 100 = 484",
+      "confidence": 0.94,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "P = V**2 / R",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 4,
+      "text": "P = 110**2 / 484 = 25 W",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    }
+  ]
+}

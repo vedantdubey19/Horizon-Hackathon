@@ -1,0 +1,23 @@
+{
+  "problem_id": "math-sys-05",
+  "steps": [
+    {
+      "id": 1,
+      "text": "y = 2*x - 4",
+      "confidence": 0.95,
+      "needs_confirmation": false
+    },
+    {
+      "id": 2,
+      "text": "3*x + (2*x - 4) = 11 => 5*x = 15 => x = 3",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    },
+    {
+      "id": 3,
+      "text": "y = 2*(3) - 4 = 2",
+      "confidence": 0.96,
+      "needs_confirmation": false
+    }
+  ]
+}

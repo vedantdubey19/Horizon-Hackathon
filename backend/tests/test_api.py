@@ -1,4 +1,5 @@
 import io
+from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
@@ -79,8 +80,11 @@ def test_get_single_problem_and_not_found():
 
 
 def test_transcribe_endpoint_valid_image():
-    # Read sample png
-    with open("samples/images/ohm_correct.png", "rb") as f:
+    # Read sample png from candidate paths
+    sample_path = Path(__file__).resolve().parent.parent / "samples" / "images" / "ohm_correct.png"
+    if not sample_path.exists():
+        sample_path = Path(__file__).resolve().parent.parent.parent / "samples" / "images" / "ohm_correct.png"
+    with open(sample_path, "rb") as f:
         img_bytes = f.read()
 
     res = client.post(

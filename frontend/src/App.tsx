@@ -6,12 +6,13 @@ import { MarksBreakdown } from './components/MarksBreakdown';
 import { ProblemPicker } from './components/ProblemPicker';
 import { StepEditor } from './components/StepEditor';
 import { useGrading } from './hooks/useGrading';
+import { FALLBACK_PROBLEMS } from './data/fallbackProblems';
 import { ProblemSummary } from './types';
 import './styles/base.css';
 import './styles/paper.css';
 
 export const App: React.FC = () => {
-  const [problems, setProblems] = useState<ProblemSummary[]>([]);
+  const [problems, setProblems] = useState<ProblemSummary[]>(FALLBACK_PROBLEMS);
   const [isDemoMode, setIsDemoMode] = useState<boolean>(true);
 
   const {
@@ -36,48 +37,63 @@ export const App: React.FC = () => {
     dismissError,
   } = useGrading();
 
-  // Load initial problems and health status
-  useEffect(() => {
+  const loadInitialData = React.useCallback(async () => {
     fetchHealth()
       .then((h) => setIsDemoMode(h.demo_mode))
       .catch(() => setIsDemoMode(true));
 
-    fetchProblems()
-      .then((data) => {
+    try {
+      const data = await fetchProblems();
+      if (Array.isArray(data) && data.length > 0) {
         setProblems(data);
-        if (data.length > 0 && !selectedProblem) {
+        if (!selectedProblem) {
           selectProblem(data[0]);
         }
-
-        // Check for quick sample presets via URL search query
-        const params = new URLSearchParams(window.location.search);
-        const sampleQuery = params.get('sample');
-
-        if (sampleQuery === 'correct') {
-          const p = data.find((x) => x.id === 'phy-ohm-01') || data[0];
-          selectProblem(p);
-          setTimeout(() => {
-            handleTranscribe(
-              new Blob(['sample_ohm_correct_image_bytes'], { type: 'image/png' }),
-              'phy-ohm-01.png',
-              'phy-ohm-01'
-            );
-          }, 100);
-        } else if (sampleQuery === 'error') {
-          const p = data.find((x) => x.id === 'phy-ohm-01') || data[0];
-          selectProblem(p);
-          setTimeout(() => {
-            handleTranscribe(
-              new Blob(['sample_ohm_wrong_sub_image_bytes'], { type: 'image/png' }),
-              'phy-ohm-01-slip.png',
-              'phy-ohm-01'
-            );
-          }, 100);
-        }
-      })
-      .catch((err) => {
-        console.error('Failed to load problems:', err);
+        setError(null);
+      }
+    } catch (err: any) {
+      console.warn('Backend problems fetch failed, using fallback problem bank:', err);
+      setProblems(FALLBACK_PROBLEMS);
+      if (!selectedProblem) {
+        selectProblem(FALLBACK_PROBLEMS[0]);
+      }
+      setError({
+        code: 'BACKEND_CONNECTING',
+        message: err?.message || 'Connecting to backend examiner...',
+        action: 'If your backend is hosted on Render free tier, it may take ~30-50s to wake up on cold start. You can browse problems or click Retry.',
       });
+    }
+  }, [selectedProblem, selectProblem, setError]);
+
+  // Load initial problems and health status
+  useEffect(() => {
+    loadInitialData();
+
+    // Check for quick sample presets via URL search query
+    const params = new URLSearchParams(window.location.search);
+    const sampleQuery = params.get('sample');
+
+    if (sampleQuery === 'correct') {
+      const p = FALLBACK_PROBLEMS.find((x) => x.id === 'phy-ohm-01') || FALLBACK_PROBLEMS[0];
+      selectProblem(p);
+      setTimeout(() => {
+        handleTranscribe(
+          new Blob(['sample_ohm_correct_image_bytes'], { type: 'image/png' }),
+          'phy-ohm-01.png',
+          'phy-ohm-01'
+        );
+      }, 100);
+    } else if (sampleQuery === 'error') {
+      const p = FALLBACK_PROBLEMS.find((x) => x.id === 'phy-ohm-01') || FALLBACK_PROBLEMS[0];
+      selectProblem(p);
+      setTimeout(() => {
+        handleTranscribe(
+          new Blob(['sample_ohm_wrong_sub_image_bytes'], { type: 'image/png' }),
+          'phy-ohm-01-slip.png',
+          'phy-ohm-01'
+        );
+      }, 100);
+    }
   }, []);
 
   // Auto-grade sample presets once transcribed
@@ -116,6 +132,14 @@ export const App: React.FC = () => {
     requestHint(ruleId, stepText, nextLevel);
   };
 
+  const handleRetry = React.useCallback(() => {
+    if (error?.code === 'BACKEND_CONNECTING' || error?.code === 'BACKEND_NOT_CONFIGURED' || steps.length === 0) {
+      loadInitialData();
+    } else {
+      submitGrade();
+    }
+  }, [error, steps.length, loadInitialData, submitGrade]);
+
   return (
     <div className="app-container">
       {/* Header */}
@@ -141,7 +165,7 @@ export const App: React.FC = () => {
       <main>
         {error && (
           <div style={{ marginTop: 'var(--space-4)' }}>
-            <ErrorBanner error={error} onDismiss={dismissError} onRetry={submitGrade} />
+            <ErrorBanner error={error} onDismiss={dismissError} onRetry={handleRetry} />
           </div>
         )}
 
