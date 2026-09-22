@@ -209,41 +209,6 @@ All requests and responses use standard JSON contracts with explicit error model
 
 ---
 
-## 🎬 2-Minute Demo Script (For Judges)
-
-1. **Select a Problem:**
-   - In the header, select **Ohm's Law (`phy-ohm-01`)**.
-   - Note the problem statement: *“A potential difference of $12\,\text{V}$ is applied across a $6\,\Omega$ resistor. Calculate the current flowing through the circuit.”* (Max marks: 3).
-
-2. **Upload Handwritten Solution with an Error:**
-   - Click the quick preset: **"Sample: Substitution Error"** (or upload your own photo).
-   - Watch the ruled notebook populate with transcribed steps:
-     - Step 1: $V = I \cdot R$
-     - Step 2: $12 = I \cdot 24$ *(Student mistakenly substituted $24\,\Omega$ instead of $6\,\Omega$)*
-     - Step 3: $I = 12 / 24 = 0.5$
-     - Step 4: $0.5\,\text{A}$
-
-3. **Step-Level Grading in Action:**
-   - Click **"Grade Solution"**.
-   - **Step 1 (Formula):** Awarded $1/1$ mark (Green checkmark).
-   - **Step 2 (Substitution):** Red strike-through, $0/0.5$ marks lost with clear feedback: *“Incorrect value substituted for resistance $R$.”*
-   - **Step 3 (Follow-Through):** Observe that while the final numerical answer is wrong, the calculation step awards method marks because the arithmetic correctly follows through from their Step 2!
-   - Total Score: **$1.5 / 3.0$**.
-
-4. **Pedagogical Hint (No Spoilers):**
-   - Click **"Get Hint"** on Step 2.
-   - Level 1 hint appears in the gold-accented hint card:  
-     *“Check the given values in the question statement. What value is given for the resistance $R$?”*  
-     *(Notice: the hint never reveals the number $6$ or gives away the answer).*
-
-5. **Step Rewrite & Mark Recovery:**
-   - Click directly into Step 2 inside the ruled lines.
-   - Edit `12 = I * 24` to `12 = I * 6`.
-   - Click **"Re-grade Solution"**.
-   - Watch Step 2 turn green, marks jump to **$3.0 / 3.0$**, and an examiner stamp displays **“Mark Recovered! (+1.5)”**.
-
----
-
 ## ⚠️ Honest Limitations
 
 In the spirit of hackathon integrity and scientific accuracy, we explicitly highlight what MarkLoss does and does not do:
